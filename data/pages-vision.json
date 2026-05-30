@@ -1,0 +1,866 @@
+{
+  "1": {
+    "caption": "This page is the cover of the owner's manual showing the Vulcan OmniPro 220 Multiprocess Welding System. It features a large product photograph of the black and gray welding machine with its control panel visible. The page includes the Vulcan logo, product name, website/contact information, warning text, and copyright notice.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "2": {
+    "caption": "This page displays the Table of Contents and Important Safety Information sections of the manual. It includes a warning symbols and definitions table explaining DANGER, WARNING, CAUTION, and NOTICE symbols. The majority of the page is dedicated to General Safety warnings and instructions numbered 1-8.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "3": {
+    "caption": "This page contains two major safety sections with warning icons: \"Fume and Gas Safety\" and \"Arc Ray Safety\". Each section features hazard symbols (a respirator icon and a radiation/arc warning triangle) and provides numbered safety guidelines and protective equipment requirements for welding operations.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "4": {
+    "caption": "This page contains two main sections: \"Electrical Safety\" and \"Fire Safety,\" each with warning icons (electrical hazard triangle and fire hazard triangle). The page consists entirely of numbered safety warnings and instructions presented as text lists, with no diagrams, tables, charts, or visual illustrations.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "5": {
+    "caption": "This page contains text-only safety and maintenance instructions organized in three main sections: \"Welder Use and Care,\" \"Maintenance,\" and \"Gas Shielded Welding - Cylinder Safety.\" The only visual element is a small triangular warning icon with an explosion symbol next to the cylinder safety section, and a warning triangle icon next to \"SAVE THESE INSTRUCTIONS\" at the bottom.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "6": {
+    "caption": "This page contains safety information and symbology reference material. It features warnings about proper grounding to prevent electric shock, instructions about extension cords and replacement cords, and two comprehensive tables showing symbols used throughout the manual with their meanings (including technical abbreviations like IPM, AWG, VAC, and safety hazard icons).",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "7": {
+    "caption": "This page contains three specification tables for different welding processes (MIG, TIG, and Stick), displaying technical parameters such as power input, current ranges, duty cycles, and weldable materials. Each table is organized with columns showing specifications for both 120VAC and 240VAC power inputs. The layout is clean and tabular, with clear black headers and gray-shaded rows for easy reading.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": true,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": true
+    }
+  },
+  "8": {
+    "caption": "This page shows a detailed front panel diagram of the Vulcan OmniPro 220 welding system, with labeled callouts identifying all major controls and connection points. The diagram illustrates the control knobs, LCD display, power switch, gas outlets, cable sockets, and power connections on the front face of the unit. A note at the bottom explains how to connect an optional spool gun to the spool gun gas outlet.",
+    "tags": {
+      "front_panel_diagram": true,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "9": {
+    "caption": "This page shows a detailed technical diagram of the interior controls of the welding system. The illustration displays the inside view of the unit with labeled components including the wire spool, wire feed mechanism, feed tensioner, idler arm, feed roller knob, spool knob, cold wire feed switch, wire inlet liner, foot pedal socket, and wire feed control socket.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": true,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": true,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "10": {
+    "caption": "This page contains instructional diagrams for wire spool installation and setup. The top diagram shows the welder unit with the power switch location, while the middle diagram illustrates the door and door latch mechanism. The bottom diagram provides a detailed cross-section view of the wire spool assembly components including the wingnut, spacer, spool spindle, brake pad, and proper clockwise loading orientation.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": true,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": true,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": true,
+      "settings_chart": false
+    }
+  },
+  "11": {
+    "caption": "This page contains detailed diagrams showing the wire spool installation process for 10-12 pound spools, including labeled components like the spool knob, wingnut, spacer, spool adapter, and brake pad. It also shows a top-down view of the welder indicating the correct clockwise unwinding direction for the wire, and a diagram of the feed tensioner mechanism with the idler arm.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": true,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": true,
+      "settings_chart": false
+    }
+  },
+  "12": {
+    "caption": "This page shows detailed diagrams of the feed roller mechanism and instructions for checking and replacing the feed roller. The visual content includes multiple illustrations of the feed roller assembly from different angles, showing the feed roller knob, solid core v-groove rollers (marked with size 0.030/0.035 and 0.025/0.030), and flux-cored knurled groove rollers (marked 0.045 groove). The diagrams demonstrate the step-by-step process of unscrewing, removing, flipping/replacing, and reinstalling the feed roller.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": true,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "13": {
+    "caption": "This page contains technical diagrams showing the wire feed mechanism assembly and cable connections for the welding system. There are detailed illustrations of the gun cable connector insertion (showing both incorrect and correct installation), and a DCEN flux-cored polarity setup diagram showing where to connect the ground clamp cable and wire feed power cable.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": true,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": true,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "14": {
+    "caption": "This page shows a polarity setup diagram for DCEP (Direct Current Electrode Positive) solid core gas shielded welding, featuring an illustration of the welder unit with cables connected to positive and negative sockets. Below that is a step-by-step illustrated guide showing how to set up a gas cylinder with regulator, including detailed drawings of the cylinder, valve, regulator, and gas hose connections to the welder.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": true,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "15": {
+    "caption": "This page contains detailed technical diagrams showing the wire feeding mechanism during MIG welding setup. The illustrations depict the wire spool, feed guide, wire inlet liner, idler arm, and feed tensioner components, with arrows and labels showing proper wire routing and tension adjustment. There are also diagrams showing the MIG gun assembly with the nozzle and contact tip clearly labeled.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": true,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "16": {
+    "caption": "This page shows the setup procedure for powering and initializing the welder. It includes three main diagrams: the power input socket location on the back of the unit (step 24), the front panel with power switch and cord connection (step 25), and the cold wire feed switch mechanism with MIG gun and welding wire positioning (step 26). The page emphasizes critical safety warnings about electric shock danger when parts are at welding voltage.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": true,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": true,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "17": {
+    "caption": "This page contains instructional diagrams showing how to check wire drive tension and how to set up the optional spool gun accessory. The diagrams illustrate the MIG gun assembly with nozzle and contact tip, and a detailed view of the spool gun connection points including the wire feed control cable, gas hose, and power connections to the welder.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": true,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": true,
+      "settings_chart": false
+    }
+  },
+  "18": {
+    "caption": "This page contains safety warnings and basic wire welding information, featuring four circular safety icons showing required protective equipment (face shield, gloves, respirator, and protective clothing), and a simple illustration of the Vulcan welder unit with its power switch labeled.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "19": {
+    "caption": "This page contains two duty cycle rating diagrams shown as clock-like circular graphics with shaded sections indicating welding versus resting time periods. Below that is a \"Setting Up The Weld\" section with two diagrams: one showing workpiece clamping setup with chamfered edges, and another showing the welder unit with ground clamp connection to a workpiece.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": true,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "20": {
+    "caption": "This page shows the control panel layout with three knobs (Left, Right, and Main Control Knob) and provides instructions for navigating settings on the LCD display. It includes detailed images of LCD screens displaying wire diameter/thickness settings (.025\" / 24Ga) and auto weld settings (121 in/min, 13.8V). The page also shows a polarity diagram for \"Stainless Tri-Mix\" gas setup and illustrates how to adjust various welding parameters through the digital interface.",
+    "tags": {
+      "front_panel_diagram": true,
+      "interior_controls_diagram": false,
+      "polarity_diagram": true,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": true,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "21": {
+    "caption": "This page shows a series of LCD screen interface images on the right side displaying various welding settings menus (Run-In WFS, Inductance, Spot Timer, Recall Setting, and Save Setting). The left side contains text instructions for optional settings and a safety warning section about gas-shielded, solid-core wire operation, including an asphyxiation warning triangle symbol and a gas cylinder valve illustration.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": true,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "22": {
+    "caption": "This page illustrates basic MIG wire welding techniques, showing diagrams of stringer and weave bead patterns, proper MIG gun angles for fillet and butt welds (45° and 90° respectively), push and drag angles for different wire types, and the concept of Contact Tip to Work Distance (CTWD). The visual content consists of instructional diagrams demonstrating welding wire movement patterns, gun positioning angles, and proper technique execution.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "23": {
+    "caption": "This page shows operational instructions and safety procedures for shutting down and storing the welder after use. It includes diagrams of the front panel with LCD display and warning screen, duty cycle charts showing welding and resting times for different voltage/amperage settings, an illustration of placing the MIG gun on a heat-proof surface, and diagrams showing wire respooling and gas cylinder valve closure procedures.",
+    "tags": {
+      "front_panel_diagram": true,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": true,
+      "duty_cycle_visual": true,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": true,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "24": {
+    "caption": "This page shows the TIG setup instructions with a detailed diagram illustrating how to connect cables to the welder. The diagram labels key components including the foot pedal socket, TIG torch cable in negative socket, ground clamp cable in positive socket, shielding gas hose, and the TIG torch and ground clamp (both sold separately).",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": true,
+      "settings_chart": false
+    }
+  },
+  "25": {
+    "caption": "This page shows setup instructions for connecting shielding gas and power to the welding system. The visual content includes numbered diagrams showing an argon cylinder with regulator and gas hose connections (steps 1-4), and a rear-panel view of the welder showing the power input socket location.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "26": {
+    "caption": "This page contains instructions for sharpening tungsten electrodes and assembling a TIG torch. It includes a detailed diagram showing the electrode being ground at an angle against a grinding wheel, with arrows indicating the proper grinding direction parallel to the electrode length. Another diagram illustrates the complete TIG torch assembly with labeled components including the back cap, collet, collet body, ceramic nozzle, and tungsten electrode insertion point.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": true,
+      "settings_chart": false
+    }
+  },
+  "27": {
+    "caption": "This page shows the stick welding setup instructions, featuring two main diagrams: the first illustrates the rear/top view of the welder with labeled cable connections (ground clamp cable in negative socket, electrode holder cable in positive socket), and the second shows the back panel with the power input socket location. The page includes step-by-step instructions for connecting cables and the power cord, along with safety warnings.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": true,
+      "settings_chart": false
+    }
+  },
+  "28": {
+    "caption": "This page contains safety warnings and basic information about TIG/Stick welding processes. It features four safety pictograms showing required protective equipment (face shield, gloves, respirator, and fire-resistant clothing), along with warning text about protective gear requirements and welding safety. At the bottom is an illustration of the Vulcan welder unit with a warning about keeping the welding tip clear of grounded objects when powered on.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "29": {
+    "caption": "This page contains information about duty cycles and setting up welds. At the top are two tables showing TIG and Stick rated duty cycles with circular clock-like diagrams illustrating welding and resting periods at different amperages and voltages. Below that is a \"Setting up the Weld\" section with diagrams showing proper workpiece clamping, ground connection placement, and a front view of the Vulcan welder with ground clamp attachment.",
+    "tags": {
+      "front_panel_diagram": true,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": true,
+      "duty_cycle_visual": true,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "30": {
+    "caption": "This page shows instructions for TIG welding setup with three main visual elements: a front panel diagram of the Vulcan OmniPro 220 welder showing the home button and control knobs, a polarity/gas settings diagram showing the argon connection panel, and multiple LCD screen displays showing TIG process settings including rod diameter, material thickness, and output amperage controls.",
+    "tags": {
+      "front_panel_diagram": true,
+      "interior_controls_diagram": false,
+      "polarity_diagram": true,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": true,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "31": {
+    "caption": "This page contains two LCD screen diagrams showing the \"Recall Setting\" and \"Save Setting\" menu interfaces with directional button indicators. The page primarily consists of text instructions for optional settings (section d) and a detailed 19-step TIG welding procedure (steps 10-19), along with multiple safety warnings about protective gear and grounding requirements.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": true,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "32": {
+    "caption": "This page provides step-by-step instructions for stick welding setup and operation. It includes multiple LCD screen displays showing the electrode type selection (60xx), diameter and material thickness settings (3/32\" and 16 Ga), polarity diagram with cable connections, and the final auto weld settings display showing amperage (60 A) and voltage (0.0 V). The page also features a front panel diagram of the Vulcan welder showing the location of the Left Knob, Main Control Knob, Right Knob, Home and Back buttons.",
+    "tags": {
+      "front_panel_diagram": true,
+      "interior_controls_diagram": false,
+      "polarity_diagram": true,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": true,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "33": {
+    "caption": "This page shows four LCD screen displays representing optional settings menus (Hot Start, Arc Force, Recall Setting, and Save Setting), each with simple graphical icons. The page also contains detailed safety warnings and step-by-step welding operation instructions for using the stick electrode, including proper technique for striking the arc and maintaining the weld.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": true,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "34": {
+    "caption": "This page shows welding tips including the \"Strike Test\" procedure with two diagrams demonstrating how to test a weld using a dead-blow hammer - one showing a good weld that bends but doesn't break, and another showing a poor weld that snaps or cracks. The page also includes a \"Cleaning the Weld\" section with an illustration of a chipping hammer and wire brush tool, along with safety warnings about wearing protective gear.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": true,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "35": {
+    "caption": "This page shows weld penetration diagnosis at the top, displaying three cross-section diagrams (inadequate, proper, and excess penetration) with corresponding heat control guidance. Below that are six example wire weld diagrams showing good and defective welds with their visual appearance from above and in cross-section, along with corrective actions for issues like voltage problems, travel speed errors, and CTWD problems.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": true,
+      "weld_penetration_diagram": true,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "36": {
+    "caption": "This page shows visual diagrams of various welding defects including cross-sectional profile views of wire weld penetration (showing excess, proper, and inadequate penetration), a bend at joint, a coat of slag over weld, and weld not adhering properly. Each defect diagram is accompanied by numbered lists of possible causes and solutions organized by categories like Safety, Controls, Wire, Tig/Stick, Welding Tips, and Maintenance.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": true,
+      "weld_penetration_diagram": true,
+      "lcd_screens": false,
+      "troubleshooting_table": true,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "37": {
+    "caption": "This page displays four types of wire weld defects shown as top-view cross-sectional illustrations: porosity (small cavities in the bead), excessive spatter (grainy deposits around the bead), crooked/wavy bead, and burn-through (hole melted in base material). Each defect illustration is accompanied by a numbered list of possible causes and solutions for troubleshooting.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": true,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": true,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "38": {
+    "caption": "This page shows stick weld diagnosis information with cross-sectional diagrams of three penetration types (inadequate, proper, and excess) at the top, along with guidance on adjusting workplace heat and controls. Below that are seven example photographs of actual stick welds with their cross-section diagrams, showing one good weld and six defective welds with specific corrections needed (current, weld speed, and arc length adjustments).",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": true,
+      "weld_penetration_diagram": true,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "39": {
+    "caption": "This page shows visual diagrams illustrating common stick welding defects and quality issues. At the top are three cross-sectional profile views showing excessive penetration/burn-through, proper penetration, and inadequate penetration. Below that are diagrams showing weld adhesion problems (gaps between weld and base metal) and bent joints at welds, each with accompanying troubleshooting text.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": true,
+      "weld_penetration_diagram": true,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "40": {
+    "caption": "This page shows visual examples of common stick welding defects from a top-down view, including slag coating, porosity, crooked/wavy beads, excessive spatter, and burn-through. Each defect is illustrated with a cross-sectional diagram of the weld bead, accompanied by possible causes and solutions for correction.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": true,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "41": {
+    "caption": "This page contains maintenance instructions with three main sections: a WARNING about unplugging before service, instructions for inspecting and cleaning the MIG gun nozzle and contact tip (including a detailed diagram showing the nozzle and contact tip components), and instructions for replacing the LCD screen cover (with diagrams showing how to pry off the display frame and insert a new screen cover).",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": true,
+      "settings_chart": false
+    }
+  },
+  "42": {
+    "caption": "This page contains a troubleshooting table for MIG/Flux-Cored welding problems. The table is organized into three columns showing Problems, Possible Causes, and Likely Solutions for various wire feeding and welding arc issues. The page header emphasizes safety by instructing users to shut off and discharge the welder before maintenance.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": true,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "43": {
+    "caption": "This page contains a troubleshooting table with four main problems listed in the left column: \"Welder Does Not Function When Switched On,\" \"LCD Display Does Not Light When Welder is Switched On,\" \"Wire Feeds, but Arc Does Not Ignite,\" and \"Porosity in the Weld Metal.\" Each problem has corresponding \"Possible Causes\" and \"Likely Solutions\" in the middle and right columns, with numbered items for each.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": true,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "44": {
+    "caption": "This page contains a troubleshooting table for TIG/Stick welding with four main problems listed: \"Welder Does Not Function When Switched On,\" \"LCD Display Does Not Light When Welder is Switched On,\" \"Weak Arc Strength,\" and \"Welding Arc Not Stable.\" Each problem has associated possible causes and likely solutions laid out in a three-column format. At the top is an important safety warning about shutting off and discharging the welder before maintenance, and at the bottom is a safety precaution reminder with a warning symbol.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": true,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "45": {
+    "caption": "This page contains a comprehensive wiring schematic diagram showing the electrical connections for the Vulcan OmniPro 220 welding system. The diagram includes various components such as the LCD screen, MCU board, remote board, PFC circuit, transformers, and wire feed motor, with detailed electrical pathways connecting all major system components. The schematic uses standard electrical symbols and notation to represent the complete internal wiring layout of the machine.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": true,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  },
+  "46": {
+    "caption": "This page contains a parts list and diagram section with a prominent safety disclaimer at the top. The page displays a comprehensive table listing 61 parts with their descriptions and quantities organized in two columns. The parts include covers, connectors, PCBs, electrical components, and various other welding system components.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": true,
+      "settings_chart": false
+    }
+  },
+  "47": {
+    "caption": "This page shows an exploded assembly diagram of what appears to be a welding machine or power source. The diagram displays numbered parts (1-61) with leader lines pointing to their locations in the 3D technical illustration, showing how various components fit together. The right side of the page contains section tabs labeled SAFETY, CONTROLS, WIRE, TIG/STICK, WELDING TIPS, and MAINTENANCE.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": true,
+      "settings_chart": false
+    }
+  },
+  "48": {
+    "caption": "This page contains the Limited 90 Day Warranty text from Harbor Freight Tools Co. at the top, followed by mostly blank white space, and the Vulcan logo with company contact information (address in Calabasas, CA and phone number 1-800-444-3353) at the bottom.",
+    "tags": {
+      "front_panel_diagram": false,
+      "interior_controls_diagram": false,
+      "polarity_diagram": false,
+      "duty_cycle_table": false,
+      "duty_cycle_visual": false,
+      "wire_feed_mechanism": false,
+      "wiring_schematic": false,
+      "weld_defect_examples": false,
+      "weld_penetration_diagram": false,
+      "lcd_screens": false,
+      "troubleshooting_table": false,
+      "parts_list_or_assembly": false,
+      "settings_chart": false
+    }
+  }
+}

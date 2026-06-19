@@ -1,65 +1,164 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+
+type Message = {
+  role: "user" | "assistant";
+  content: string;
+};
+
+const EXAMPLE_QUESTIONS = [
+  "What's the duty cycle for MIG welding at 200A on 240V?",
+  "I'm getting porosity in my flux-cored welds. What should I check?",
+  "What polarity setup do I need for TIG welding? Which socket does the ground clamp go in?",
+];
 
 export default function Home() {
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, loading]);
+
+  async function handleSubmit(e?: React.FormEvent) {
+    e?.preventDefault();
+
+    const trimmed = input.trim();
+    if (!trimmed || loading) return;
+
+    const userMessage: Message = { role: "user", content: trimmed };
+    const nextMessages = [...messages, userMessage];
+
+    setMessages(nextMessages);
+    setInput("");
+    setLoading(true);
+
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: nextMessages }),
+      });
+
+      const data = (await res.json()) as { text?: string; error?: string };
+
+      if (!res.ok) {
+        throw new Error(data.error ?? "Request failed");
+      }
+
+      setMessages([
+        ...nextMessages,
+        { role: "assistant", content: data.text ?? "" },
+      ]);
+    } catch (err) {
+      const message =
+        err instanceof Error ? err.message : "Something went wrong";
+      setMessages([
+        ...nextMessages,
+        { role: "assistant", content: `Error: ${message}` },
+      ]);
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="flex min-h-full flex-col bg-zinc-50 text-zinc-900">
+      <div className="mx-auto flex w-full max-w-[720px] flex-1 flex-col px-4">
+        <header className="border-b border-zinc-200 py-6">
+          <h1 className="text-xl font-semibold tracking-tight">
+            Vulcan OmniPro 220 Assistant
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="mt-1 text-sm text-zinc-600">
+            Technical help for your multiprocess welder — ask about setup,
+            settings, and troubleshooting.
           </p>
+        </header>
+
+        <div className="flex flex-wrap gap-2 py-4">
+          {EXAMPLE_QUESTIONS.map((question) => (
+            <button
+              key={question}
+              type="button"
+              disabled={loading}
+              onClick={() => setInput(question)}
+              className="rounded-full border border-zinc-300 bg-white px-3 py-1.5 text-left text-xs text-zinc-700 transition-colors hover:border-zinc-400 hover:bg-zinc-100 disabled:opacity-50"
+            >
+              {question}
+            </button>
+          ))}
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+
+        <div className="flex-1 overflow-y-auto pb-4">
+          {messages.length === 0 && !loading && (
+            <p className="py-8 text-center text-sm text-zinc-500">
+              Ask a question about your welder, or pick an example above.
+            </p>
+          )}
+
+          <div className="flex flex-col gap-4">
+            {messages.map((message, i) => (
+              <div
+                key={i}
+                className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
+              >
+                <div
+                  className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap ${
+                    message.role === "user"
+                      ? "bg-zinc-900 text-white"
+                      : "border border-zinc-200 bg-white text-zinc-900"
+                  }`}
+                >
+                  {message.content}
+                </div>
+              </div>
+            ))}
+
+            {loading && (
+              <div className="flex justify-start">
+                <div className="rounded-2xl border border-zinc-200 bg-white px-4 py-3 text-sm text-zinc-500">
+                  Thinking…
+                </div>
+              </div>
+            )}
+
+            <div ref={messagesEndRef} />
+          </div>
+        </div>
+
+        <form
+          onSubmit={handleSubmit}
+          className="sticky bottom-0 border-t border-zinc-200 bg-zinc-50 py-4"
+        >
+          <div className="flex gap-2">
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && !e.shiftKey) {
+                  e.preventDefault();
+                  void handleSubmit();
+                }
+              }}
+              placeholder="Ask about setup, duty cycle, polarity…"
+              disabled={loading}
+              className="flex-1 rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-500 focus:outline-none disabled:opacity-50"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+            <button
+              type="submit"
+              disabled={loading || !input.trim()}
+              className="rounded-xl bg-zinc-900 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              Send
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

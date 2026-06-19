@@ -1,6 +1,9 @@
 import { readFileSync } from "node:fs";
+import { createRequire } from "node:module";
 import { join } from "node:path";
-import { VoyageAIClient } from "voyageai";
+
+const require = createRequire(import.meta.url);
+const { VoyageAIClient } = require("voyageai") as typeof import("voyageai");
 
 export type Chunk = {
   id: string;

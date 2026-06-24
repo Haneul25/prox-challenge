@@ -13,8 +13,11 @@ export const runtime = "nodejs";
 
 const PNG_DIR = join(process.cwd(), "public/manual");
 
+// Assumes single-user/sequential requests (fine for local demo, not concurrent-safe).
+let surfacedImages: { page: number; caption: string }[] = [];
+
 const SYSTEM_PROMPT =
-  "You are a technical assistant for the Vulcan OmniPro 220 multiprocess welding system. The user just bought this welder and is setting it up in their garage — capable, but not a professional welder. For every technical question, call search_manual first to find relevant pages. When a question depends on a table, diagram, schematic, or photo — duty cycle values, polarity/socket setup, wiring, weld appearance — call view_manual_page on the relevant page to read it visually before answering. Don't rely on text extraction alone for visual content. Cite page numbers like (page 7). Be concise: lead with the direct answer, then brief context.";
+  "You are a technical assistant for the Vulcan OmniPro 220 multiprocess welding system. The user just bought this welder and is setting it up in their garage — capable, but not a professional welder. For every technical question, call search_manual first to find relevant pages. When a question depends on a table, diagram, schematic, or photo — duty cycle values, polarity/socket setup, wiring, weld appearance — call view_manual_page on the relevant page to read it visually before answering. Don't rely on text extraction alone for visual content. When the user asks about something with important visual content — wiring schematic, weld-defect appearance, control panel, polarity setup — call surface_manual_image to show them the actual page, in addition to explaining it in words. Showing beats describing for visual questions. Cite page numbers like (page 7). Be concise: lead with the direct answer, then brief context.";
 
 const searchManualTool = tool(
   "search_manual",
@@ -67,10 +70,33 @@ const viewManualPageTool = tool(
   }
 );
 
+const surfaceManualImageTool = tool(
+  "surface_manual_image",
+  "Display an actual manual page image inline in the chat for the user to see. Use this when the user would benefit from seeing the real diagram, schematic, photo, or chart — e.g. the wiring schematic, weld-defect examples, control panel layout, polarity diagrams. This shows the image to the USER (distinct from view_manual_page, which lets YOU read it). Provide a short caption explaining what the image shows.",
+  {
+    page: z.number().describe("manual page number, 1-48"),
+    caption: z
+      .string()
+      .describe("short caption describing what this page shows the user"),
+  },
+  async (args) => {
+    surfacedImages.push({ page: args.page, caption: args.caption });
+
+    return {
+      content: [
+        { type: "text", text: `Surfaced page ${args.page} to the user.` },
+      ],
+    };
+  },
+  {
+    annotations: { readOnlyHint: true },
+  }
+);
+
 const manualServer = createSdkMcpServer({
   name: "manual",
   version: "1.0.0",
-  tools: [searchManualTool, viewManualPageTool],
+  tools: [searchManualTool, viewManualPageTool, surfaceManualImageTool],
 });
 
 type ChatMessage = {
@@ -108,6 +134,8 @@ function extractAssistantText(content: unknown): string {
 
 export async function POST(request: Request) {
   try {
+    surfacedImages = [];
+
     const body = (await request.json()) as { messages?: ChatMessage[] };
     const messages = body.messages ?? [];
     const prompt = getLatestUserMessage(messages);
@@ -127,6 +155,7 @@ export async function POST(request: Request) {
         allowedTools: [
           "mcp__manual__search_manual",
           "mcp__manual__view_manual_page",
+          "mcp__manual__surface_manual_image",
         ],
       },
     });
@@ -148,7 +177,10 @@ export async function POST(request: Request) {
       }
     }
 
-    return NextResponse.json({ text: finalText || assistantText });
+    return NextResponse.json({
+      text: finalText || assistantText,
+      images: surfacedImages,
+    });
   } catch (error) {
     const message =
       error instanceof Error ? error.message : "Unknown error occurred";

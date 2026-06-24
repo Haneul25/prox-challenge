@@ -3,9 +3,15 @@
 import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 
+type SurfacedImage = {
+  page: number;
+  caption: string;
+};
+
 type Message = {
   role: "user" | "assistant";
   content: string;
+  images?: SurfacedImage[];
 };
 
 const EXAMPLE_QUESTIONS = [
@@ -44,7 +50,11 @@ export default function Home() {
         body: JSON.stringify({ messages: nextMessages }),
       });
 
-      const data = (await res.json()) as { text?: string; error?: string };
+      const data = (await res.json()) as {
+        text?: string;
+        error?: string;
+        images?: SurfacedImage[];
+      };
 
       if (!res.ok) {
         throw new Error(data.error ?? "Request failed");
@@ -52,7 +62,11 @@ export default function Home() {
 
       setMessages([
         ...nextMessages,
-        { role: "assistant", content: data.text ?? "" },
+        {
+          role: "assistant",
+          content: data.text ?? "",
+          ...(data.images?.length ? { images: data.images } : {}),
+        },
       ]);
     } catch (err) {
       const message =
@@ -114,9 +128,23 @@ export default function Home() {
                   }`}
                 >
                   {message.role === "assistant" ? (
-                    <div className="[&_a]:underline [&_h1]:mt-3 [&_h1]:mb-1 [&_h1]:text-base [&_h1]:font-semibold [&_h2]:mt-2 [&_h2]:mb-1 [&_h2]:text-sm [&_h2]:font-semibold [&_h3]:mt-2 [&_h3]:mb-1 [&_h3]:font-semibold [&_li]:my-0.5 [&_ol]:my-2 [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:my-2 [&_p:first-child]:mt-0 [&_p:last-child]:mb-0 [&_strong]:font-semibold [&_ul]:my-2 [&_ul]:list-disc [&_ul]:pl-5">
-                      <ReactMarkdown>{message.content}</ReactMarkdown>
-                    </div>
+                    <>
+                      <div className="[&_a]:underline [&_h1]:mt-3 [&_h1]:mb-1 [&_h1]:text-base [&_h1]:font-semibold [&_h2]:mt-2 [&_h2]:mb-1 [&_h2]:text-sm [&_h2]:font-semibold [&_h3]:mt-2 [&_h3]:mb-1 [&_h3]:font-semibold [&_li]:my-0.5 [&_ol]:my-2 [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:my-2 [&_p:first-child]:mt-0 [&_p:last-child]:mb-0 [&_strong]:font-semibold [&_ul]:my-2 [&_ul]:list-disc [&_ul]:pl-5">
+                        <ReactMarkdown>{message.content}</ReactMarkdown>
+                      </div>
+                      {message.images?.map((image, j) => (
+                        <figure key={j} className="mt-3">
+                          <img
+                            src={`/manual/page-${image.page}.png`}
+                            alt={image.caption}
+                            className="max-w-full rounded-lg border border-zinc-200"
+                          />
+                          <figcaption className="mt-1.5 text-xs text-zinc-500">
+                            {image.caption}
+                          </figcaption>
+                        </figure>
+                      ))}
+                    </>
                   ) : (
                     message.content
                   )}

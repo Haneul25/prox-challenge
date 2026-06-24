@@ -8,10 +8,16 @@ type SurfacedImage = {
   caption: string;
 };
 
+type RenderedDiagram = {
+  svg: string;
+  caption: string;
+};
+
 type Message = {
   role: "user" | "assistant";
   content: string;
   images?: SurfacedImage[];
+  diagrams?: RenderedDiagram[];
 };
 
 const EXAMPLE_QUESTIONS = [
@@ -54,6 +60,7 @@ export default function Home() {
         text?: string;
         error?: string;
         images?: SurfacedImage[];
+        diagrams?: RenderedDiagram[];
       };
 
       if (!res.ok) {
@@ -66,6 +73,7 @@ export default function Home() {
           role: "assistant",
           content: data.text ?? "",
           ...(data.images?.length ? { images: data.images } : {}),
+          ...(data.diagrams?.length ? { diagrams: data.diagrams } : {}),
         },
       ]);
     } catch (err) {
@@ -141,6 +149,17 @@ export default function Home() {
                           />
                           <figcaption className="mt-1.5 text-xs text-zinc-500">
                             {image.caption}
+                          </figcaption>
+                        </figure>
+                      ))}
+                      {message.diagrams?.map((diagram, k) => (
+                        <figure key={k} className="mt-3">
+                          <div
+                            className="max-w-full rounded-lg border border-zinc-200 p-3 [&_svg]:max-w-full"
+                            dangerouslySetInnerHTML={{ __html: diagram.svg }}
+                          />
+                          <figcaption className="mt-1.5 text-xs text-zinc-500">
+                            {diagram.caption}
                           </figcaption>
                         </figure>
                       ))}

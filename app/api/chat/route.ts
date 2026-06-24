@@ -15,9 +15,10 @@ const PNG_DIR = join(process.cwd(), "public/manual");
 
 // Assumes single-user/sequential requests (fine for local demo, not concurrent-safe).
 let surfacedImages: { page: number; caption: string }[] = [];
+let renderedDiagrams: { svg: string; caption: string }[] = [];
 
 const SYSTEM_PROMPT =
-  "You are a technical assistant for the Vulcan OmniPro 220 multiprocess welding system. The user just bought this welder and is setting it up in their garage — capable, but not a professional welder. For every technical question, call search_manual first to find relevant pages. When a question depends on a table, diagram, schematic, or photo — duty cycle values, polarity/socket setup, wiring, weld appearance — call view_manual_page on the relevant page to read it visually before answering. Don't rely on text extraction alone for visual content. When the user asks about something with important visual content — wiring schematic, weld-defect appearance, control panel, polarity setup — call surface_manual_image to show them the actual page, in addition to explaining it in words. Showing beats describing for visual questions. Cite page numbers like (page 7). Be concise: lead with the direct answer, then brief context.";
+  "You are a technical assistant for the Vulcan OmniPro 220 multiprocess welding system. The user just bought this welder and is setting it up in their garage — capable, but not a professional welder. For every technical question, call search_manual first to find relevant pages. When a question depends on a table, diagram, schematic, or photo — duty cycle values, polarity/socket setup, wiring, weld appearance — call view_manual_page on the relevant page to read it visually before answering. Don't rely on text extraction alone for visual content. When the user asks about something with important visual content — wiring schematic, weld-defect appearance, control panel, polarity setup — call surface_manual_image to show them the actual page, in addition to explaining it in words. Showing beats describing for visual questions. For polarity setups and cable-to-socket questions, call render_diagram to draw a clear diagram of which cable goes in which socket, in addition to explaining it. A drawn diagram beats a text description for spatial relationships. You may also surface the manual's polarity page alongside your own diagram. Cite page numbers like (page 7). Be concise: lead with the direct answer, then brief context.";
 
 const searchManualTool = tool(
   "search_manual",
@@ -93,10 +94,40 @@ const surfaceManualImageTool = tool(
   }
 );
 
+const renderDiagramTool = tool(
+  "render_diagram",
+  "Generate and display a custom SVG diagram inline to the user. Use for spatial/relational answers — especially polarity setups showing which cable goes in which socket. Provide complete, valid SVG markup as the svg argument, following these rules strictly: (1) Use viewBox='0 0 600 400', no width/height attributes. (2) Background transparent. (3) Use only these colors: #1a1a1a for outlines/text, #dc2626 (red) for positive/+ elements, #2563eb (blue) for negative/- elements, #f5f5f5 for fills. (4) Font: font-family='system-ui, sans-serif', font-size 14-18 for labels, bold for socket labels. (5) Label every element clearly — socket names (Positive/Negative), what plugs in (Ground Clamp, Torch, Wire Feed), and the polarity (DCEN/DCEP) as a title. (6) Keep it clean and uncluttered: simple shapes (rect, circle, line), generous spacing, clear visual hierarchy. (7) Draw sockets as circles, cables as thick lines connecting to labeled boxes. Make the cable-to-socket relationship unmistakable.",
+  {
+    svg: z
+      .string()
+      .describe(
+        "complete valid SVG markup following the constraints in the tool description"
+      ),
+    caption: z.string().describe("short caption describing the diagram"),
+  },
+  async (args) => {
+    renderedDiagrams.push({ svg: args.svg, caption: args.caption });
+
+    return {
+      content: [
+        { type: "text", text: "Diagram rendered and shown to the user." },
+      ],
+    };
+  },
+  {
+    annotations: { readOnlyHint: true },
+  }
+);
+
 const manualServer = createSdkMcpServer({
   name: "manual",
   version: "1.0.0",
-  tools: [searchManualTool, viewManualPageTool, surfaceManualImageTool],
+  tools: [
+    searchManualTool,
+    viewManualPageTool,
+    surfaceManualImageTool,
+    renderDiagramTool,
+  ],
 });
 
 type ChatMessage = {
@@ -135,6 +166,7 @@ function extractAssistantText(content: unknown): string {
 export async function POST(request: Request) {
   try {
     surfacedImages = [];
+    renderedDiagrams = [];
 
     const body = (await request.json()) as { messages?: ChatMessage[] };
     const messages = body.messages ?? [];
@@ -156,6 +188,7 @@ export async function POST(request: Request) {
           "mcp__manual__search_manual",
           "mcp__manual__view_manual_page",
           "mcp__manual__surface_manual_image",
+          "mcp__manual__render_diagram",
         ],
       },
     });
@@ -180,6 +213,7 @@ export async function POST(request: Request) {
     return NextResponse.json({
       text: finalText || assistantText,
       images: surfacedImages,
+      diagrams: renderedDiagrams,
     });
   } catch (error) {
     const message =

@@ -4,13 +4,17 @@ import {
   query,
   tool,
 } from "@anthropic-ai/claude-agent-sdk";
+import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
 export const runtime = "nodejs";
 
+const PNG_DIR = join(process.cwd(), "public/manual");
+
 const SYSTEM_PROMPT =
-  "You are a technical assistant for the Vulcan OmniPro 220 multiprocess welding system. The user just bought this welder and is setting it up in their garage — capable, but not a professional welder. For every technical question, call search_manual first to find relevant pages. Cite page numbers like (page 7). Be concise: lead with the direct answer, then brief context.";
+  "You are a technical assistant for the Vulcan OmniPro 220 multiprocess welding system. The user just bought this welder and is setting it up in their garage — capable, but not a professional welder. For every technical question, call search_manual first to find relevant pages. When a question depends on a table, diagram, schematic, or photo — duty cycle values, polarity/socket setup, wiring, weld appearance — call view_manual_page on the relevant page to read it visually before answering. Don't rely on text extraction alone for visual content. Cite page numbers like (page 7). Be concise: lead with the direct answer, then brief context.";
 
 const searchManualTool = tool(
   "search_manual",
@@ -36,10 +40,37 @@ const searchManualTool = tool(
   }
 );
 
+const viewManualPageTool = tool(
+  "view_manual_page",
+  "Look at the actual image of a specific manual page to read tables, diagrams, schematics, or photos in detail. Use this when a question depends on visual content that text alone can't convey accurately — duty cycle tables, wiring schematics, weld-defect photos, polarity diagrams, control panel layouts.",
+  {
+    page: z.number().describe("the manual page number to view, 1-48"),
+  },
+  async (args) => {
+    const imagePath = join(PNG_DIR, `page-${args.page}.png`);
+
+    if (!existsSync(imagePath)) {
+      return {
+        content: [{ type: "text", text: `Page ${args.page} not found` }],
+        isError: true,
+      };
+    }
+
+    const data = readFileSync(imagePath).toString("base64");
+
+    return {
+      content: [{ type: "image", data, mimeType: "image/png" }],
+    };
+  },
+  {
+    annotations: { readOnlyHint: true },
+  }
+);
+
 const manualServer = createSdkMcpServer({
   name: "manual",
   version: "1.0.0",
-  tools: [searchManualTool],
+  tools: [searchManualTool, viewManualPageTool],
 });
 
 type ChatMessage = {
@@ -93,7 +124,10 @@ export async function POST(request: Request) {
       options: {
         systemPrompt: SYSTEM_PROMPT,
         mcpServers: { manual: manualServer },
-        allowedTools: ["mcp__manual__search_manual"],
+        allowedTools: [
+          "mcp__manual__search_manual",
+          "mcp__manual__view_manual_page",
+        ],
       },
     });
 

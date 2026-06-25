@@ -3,6 +3,7 @@
 A multimodal agent for the Vulcan OmniPro 220 welder, built with the Claude Agent SDK. You can ask it about setup, polarity, duty cycle, settings, or troubleshooting and it answers like someone who actually knows the machine. When text isn't enough it pulls up the exact manual page, draws a diagram, or gives you an interactive calculator.
 
 Live demo: https://prox-challenge-production-f288.up.railway.app
+Video for the demo: https://www.loom.com/share/babb800b34c547d7bdbd0f7ff87c9474
 
 ## What it does
 

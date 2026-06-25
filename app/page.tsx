@@ -19,12 +19,18 @@ type SurfacedComponent = {
   props: Record<string, unknown>;
 };
 
+type Clarification = {
+  question: string;
+  options: string[];
+};
+
 type Message = {
   role: "user" | "assistant";
   content: string;
   images?: SurfacedImage[];
   diagrams?: RenderedDiagram[];
   components?: SurfacedComponent[];
+  clarification?: Clarification;
 };
 
 function renderAssistantComponent(
@@ -61,10 +67,8 @@ export default function Home() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, loading]);
 
-  async function handleSubmit(e?: React.FormEvent) {
-    e?.preventDefault();
-
-    const trimmed = input.trim();
+  async function sendMessage(text: string) {
+    const trimmed = text.trim();
     if (!trimmed || loading) return;
 
     const userMessage: Message = { role: "user", content: trimmed };
@@ -87,6 +91,7 @@ export default function Home() {
         images?: SurfacedImage[];
         diagrams?: RenderedDiagram[];
         components?: SurfacedComponent[];
+        clarification?: Clarification | null;
       };
 
       if (!res.ok) {
@@ -101,6 +106,7 @@ export default function Home() {
           ...(data.images?.length ? { images: data.images } : {}),
           ...(data.diagrams?.length ? { diagrams: data.diagrams } : {}),
           ...(data.components?.length ? { components: data.components } : {}),
+          ...(data.clarification ? { clarification: data.clarification } : {}),
         },
       ]);
     } catch (err) {
@@ -113,6 +119,11 @@ export default function Home() {
     } finally {
       setLoading(false);
     }
+  }
+
+  async function handleSubmit(e?: React.FormEvent) {
+    e?.preventDefault();
+    await sendMessage(input);
   }
 
   return (
@@ -192,6 +203,26 @@ export default function Home() {
                       ))}
                       {message.components?.map((entry, m) =>
                         renderAssistantComponent(entry, m)
+                      )}
+                      {message.clarification && (
+                        <div className="mt-3 border-t border-zinc-100 pt-3">
+                          <p className="font-medium text-zinc-900">
+                            {message.clarification.question}
+                          </p>
+                          <div className="mt-2 flex flex-wrap gap-2">
+                            {message.clarification.options.map((option) => (
+                              <button
+                                key={option}
+                                type="button"
+                                disabled={loading || i !== messages.length - 1}
+                                onClick={() => void sendMessage(option)}
+                                className="rounded-full border border-zinc-300 bg-white px-3 py-1.5 text-xs text-zinc-700 transition-colors hover:border-zinc-400 hover:bg-zinc-100 disabled:cursor-not-allowed disabled:opacity-50"
+                              >
+                                {option}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
                       )}
                     </>
                   ) : (

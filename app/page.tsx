@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import DutyCycleCalculator from "@/components/DutyCycleCalculator";
+import { type ComponentProps, useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 
 type SurfacedImage = {
@@ -13,12 +14,36 @@ type RenderedDiagram = {
   caption: string;
 };
 
+type SurfacedComponent = {
+  component: string;
+  props: Record<string, unknown>;
+};
+
 type Message = {
   role: "user" | "assistant";
   content: string;
   images?: SurfacedImage[];
   diagrams?: RenderedDiagram[];
+  components?: SurfacedComponent[];
 };
+
+function renderAssistantComponent(
+  entry: SurfacedComponent,
+  key: number
+): React.ReactNode {
+  switch (entry.component) {
+    case "duty_cycle_calculator":
+      return (
+        <div key={key} className="mt-3">
+          <DutyCycleCalculator
+            {...(entry.props as ComponentProps<typeof DutyCycleCalculator>)}
+          />
+        </div>
+      );
+    default:
+      return null;
+  }
+}
 
 const EXAMPLE_QUESTIONS = [
   "What's the duty cycle for MIG welding at 200A on 240V?",
@@ -61,6 +86,7 @@ export default function Home() {
         error?: string;
         images?: SurfacedImage[];
         diagrams?: RenderedDiagram[];
+        components?: SurfacedComponent[];
       };
 
       if (!res.ok) {
@@ -74,6 +100,7 @@ export default function Home() {
           content: data.text ?? "",
           ...(data.images?.length ? { images: data.images } : {}),
           ...(data.diagrams?.length ? { diagrams: data.diagrams } : {}),
+          ...(data.components?.length ? { components: data.components } : {}),
         },
       ]);
     } catch (err) {
@@ -163,6 +190,9 @@ export default function Home() {
                           </figcaption>
                         </figure>
                       ))}
+                      {message.components?.map((entry, m) =>
+                        renderAssistantComponent(entry, m)
+                      )}
                     </>
                   ) : (
                     message.content

@@ -16,9 +16,11 @@ const PNG_DIR = join(process.cwd(), "public/manual");
 // Assumes single-user/sequential requests (fine for local demo, not concurrent-safe).
 let surfacedImages: { page: number; caption: string }[] = [];
 let renderedDiagrams: { svg: string; caption: string }[] = [];
+let shownComponents: { component: string; props: Record<string, unknown> }[] =
+  [];
 
 const SYSTEM_PROMPT =
-  "You are a technical assistant for the Vulcan OmniPro 220 multiprocess welding system. The user just bought this welder and is setting it up in their garage — capable, but not a professional welder. For every technical question, call search_manual first to find relevant pages. When a question depends on a table, diagram, schematic, or photo — duty cycle values, polarity/socket setup, wiring, weld appearance — call view_manual_page on the relevant page to read it visually before answering. Don't rely on text extraction alone for visual content. When the user asks about something with important visual content — wiring schematic, weld-defect appearance, control panel, polarity setup — call surface_manual_image to show them the actual page, in addition to explaining it in words. Showing beats describing for visual questions. For polarity setups and cable-to-socket questions, call render_diagram to draw a clear diagram of which cable goes in which socket, in addition to explaining it. A drawn diagram beats a text description for spatial relationships. You may also surface the manual's polarity page alongside your own diagram. Cite page numbers like (page 7). Be concise: lead with the direct answer, then brief context.";
+  "You are a technical assistant for the Vulcan OmniPro 220 multiprocess welding system. The user just bought this welder and is setting it up in their garage — capable, but not a professional welder. For every technical question, call search_manual first to find relevant pages. When a question depends on a table, diagram, schematic, or photo — duty cycle values, polarity/socket setup, wiring, weld appearance — call view_manual_page on the relevant page to read it visually before answering. Don't rely on text extraction alone for visual content. When the user asks about something with important visual content — wiring schematic, weld-defect appearance, control panel, polarity setup — call surface_manual_image to show them the actual page, in addition to explaining it in words. Showing beats describing for visual questions. For polarity setups and cable-to-socket questions, call render_diagram to draw a clear diagram of which cable goes in which socket, in addition to explaining it. A drawn diagram beats a text description for spatial relationships. You may also surface the manual's polarity page alongside your own diagram. For duty cycle questions — how long can I weld, rest cycles, overheating at a current — call show_duty_cycle_calculator pre-set to the relevant process/voltage/amperage, in addition to explaining the answer. The interactive tool lets the user explore different currents themselves. Cite page numbers like (page 7). Be concise: lead with the direct answer, then brief context.";
 
 const searchManualTool = tool(
   "search_manual",
@@ -119,6 +121,38 @@ const renderDiagramTool = tool(
   }
 );
 
+const showDutyCycleCalculatorTool = tool(
+  "show_duty_cycle_calculator",
+  "Display an interactive duty cycle calculator to the user, pre-set to a process, voltage, and amperage. Use this when the user asks about duty cycle, how long they can weld, rest cycles, or overheating at a given current. The calculator lets them adjust process/voltage/amperage and see the rated limits and rest cycle live. Pre-set it to match their question.",
+  {
+    process: z.enum(["MIG", "TIG", "Stick"]).describe("welding process"),
+    voltage: z.enum(["120V", "240V"]).describe("input voltage"),
+    amps: z.number().describe("amperage to pre-set the slider to"),
+  },
+  async (args) => {
+    shownComponents.push({
+      component: "duty_cycle_calculator",
+      props: {
+        process: args.process,
+        voltage: args.voltage,
+        amps: args.amps,
+      },
+    });
+
+    return {
+      content: [
+        {
+          type: "text",
+          text: `Duty cycle calculator shown to the user, set to ${args.process} / ${args.voltage} / ${args.amps}A.`,
+        },
+      ],
+    };
+  },
+  {
+    annotations: { readOnlyHint: true },
+  }
+);
+
 const manualServer = createSdkMcpServer({
   name: "manual",
   version: "1.0.0",
@@ -127,6 +161,7 @@ const manualServer = createSdkMcpServer({
     viewManualPageTool,
     surfaceManualImageTool,
     renderDiagramTool,
+    showDutyCycleCalculatorTool,
   ],
 });
 
@@ -167,6 +202,7 @@ export async function POST(request: Request) {
   try {
     surfacedImages = [];
     renderedDiagrams = [];
+    shownComponents = [];
 
     const body = (await request.json()) as { messages?: ChatMessage[] };
     const messages = body.messages ?? [];
@@ -189,6 +225,7 @@ export async function POST(request: Request) {
           "mcp__manual__view_manual_page",
           "mcp__manual__surface_manual_image",
           "mcp__manual__render_diagram",
+          "mcp__manual__show_duty_cycle_calculator",
         ],
       },
     });
@@ -214,6 +251,7 @@ export async function POST(request: Request) {
       text: finalText || assistantText,
       images: surfacedImages,
       diagrams: renderedDiagrams,
+      components: shownComponents,
     });
   } catch (error) {
     const message =
